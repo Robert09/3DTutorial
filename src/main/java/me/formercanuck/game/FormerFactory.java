@@ -44,21 +44,21 @@ public class FormerFactory implements IGameLogic {
 
         float[] positions = new float[]{
                 // VO
-                -0.5f, 0.5f, 0.5f,
+                -0.5f, 0.5f, -1.5f,
                 // V1
-                -0.5f, -0.5f, 0.5f,
+                -0.5f, -0.5f, -1.5f,
                 // V2
-                0.5f, -0.5f, 0.5f,
+                0.5f, -0.5f, -1.5f,
                 // V3
-                0.5f, 0.5f, 0.5f,
+                0.5f, 0.5f, -1.5f,
                 // V4
-                -0.5f, 0.5f, -0.5f,
+                -0.5f, 0.5f, -1.5f,
                 // V5
-                0.5f, 0.5f, -0.5f,
+                0.5f, 0.5f, -1.5f,
                 // V6
-                -0.5f, -0.5f, -0.5f,
+                -0.5f, -0.5f, -1.5f,
                 // V7
-                0.5f, -0.5f, -0.5f,
+                0.5f, -0.5f, -1.5f,
         };
         float[] colors = new float[]{
                 0.5f, 0.0f, 0.0f,
