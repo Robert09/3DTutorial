@@ -2,14 +2,14 @@ package me.formercanuck.engine.graphics;
 
 import me.formercanuck.engine.scene.Entity;
 import me.formercanuck.engine.scene.Scene;
+import org.joml.Matrix4f;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL20.GL_FRAGMENT_SHADER;
-import static org.lwjgl.opengl.GL20.GL_VERTEX_SHADER;
+import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 
 public class SceneRenderer {
@@ -44,11 +44,14 @@ public class SceneRenderer {
         for (Model model : models) {
             model.getMeshList().stream().forEach(mesh -> {
                 glBindVertexArray(mesh.getVaoId());
+                glEnableVertexAttribArray(0);
+                glEnableVertexAttribArray(1);
                 List<Entity> entities = model.getEntitiesList();
                 for (Entity entity : entities) {
                     uniformsMap.setUniform("modelMatrix", entity.getModelMatrix());
                     glDrawElements(GL_TRIANGLES, mesh.getNumVertices(), GL_UNSIGNED_INT, 0);
                 }
+
             });
         }
 

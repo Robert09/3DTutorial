@@ -12,6 +12,7 @@ public class Renderer {
     public Renderer() {
         GL.createCapabilities();
         glEnable(GL_DEPTH_TEST);
+        glDisable(GL_CULL_FACE);
         glClearColor(0.2f, 0.2f, 0.2f, 1.0f);
         sceneRenderer = new SceneRenderer();
     }
