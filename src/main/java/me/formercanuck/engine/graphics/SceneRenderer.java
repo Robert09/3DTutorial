@@ -37,26 +37,26 @@ public class SceneRenderer {
 
     public void render(Scene scene) {
         shaderProgram.bind();
-
         uniformsMap.setUniform("projectionMatrix", scene.getProjection().getProjMatrix());
 
-        Collection<Model> models = scene.getModelMap().values();
-        for (Model model : models) {
-            model.getMeshList().stream().forEach(mesh -> {
+        for (Model model : scene.getModelMap().values()) {
+            for (Mesh mesh : model.getMeshList()) {
                 glBindVertexArray(mesh.getVaoId());
                 glEnableVertexAttribArray(0);
                 glEnableVertexAttribArray(1);
-                List<Entity> entities = model.getEntitiesList();
-                for (Entity entity : entities) {
+
+                for (Entity entity : model.getEntitiesList()) {
                     uniformsMap.setUniform("modelMatrix", entity.getModelMatrix());
                     glDrawElements(GL_TRIANGLES, mesh.getNumVertices(), GL_UNSIGNED_INT, 0);
                 }
 
-            });
+                glDisableVertexAttribArray(0);
+                glDisableVertexAttribArray(1);
+            }
         }
 
         glBindVertexArray(0);
-
         shaderProgram.unbind();
     }
+
 }
